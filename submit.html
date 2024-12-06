@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit an Investment Opportunity</title>
+    <style>
+        /* Basic styling for form elements */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        form {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            margin-top: 20px;
+            border-top: 2px solid #ccc;
+            padding-top: 10px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-right: 15px;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Submit an Investment Opportunity</h1>
+
+<form action="https://formspree.io/f/mjkvzqpz" method="POST" id="submitForm">
+    <!-- Contact Section -->
+    <div class="section-title">Contact</div>
+    <label for="first_name">First Name*</label>
+    <input type="text" id="first_name" name="first_name" required>
+
+    <label for="last_name">Last Name*</label>
+    <input type="text" id="last_name" name="last_name" required>
+
+    <label for="email">Contact Email*</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="confirm_email">Confirm Email*</label>
+    <input type="email" id="confirm_email" name="confirm_email" required>
+
+    <!-- Company Section -->
+    <div class="section-title">Company</div>
+    <label for="company_name">Company Name*</label>
+    <input type="text" id="company_name" name="company_name" required>
+
+    <label for="company_website">Website</label>
+    <input type="text" id="company_website" name="company_website">
+
+    <label for="company_description">Description*</label>
+    <input type="text" id="company_description" name="company_description" maxlength="140" required>
+
+    <label for="company_address">Address</label>
+    <input type="text" id="company_address" name="company_address">
+
+    <label for="company_country">Country</label>
+    <select id="company_country" name="company_country">
+        <option value="USA">USA</option>
+        <option value="Canada">Canada</option>
+        <!-- Add more countries here -->
+    </select>
+
+    <!-- Founders & Key Management Section -->
+    <div class="section-title">Founders & Key Management</div>
+    <label for="founder_1_name">Person 1 Name*</label>
+    <input type="text" id="founder_1_name" name="founder_1_name" required>
+
+    <label for="founder_1_title">Person 1 Title*</label>
+    <input type="text" id="founder_1_title" name="founder_1_title" required>
+
+    <label for="founder_1_email">Person 1 Email*</label>
+    <input type="email" id="founder_1_email" name="founder_1_email" required>
+
+    <label for="founder_1_linkedin">Person 1 LinkedIn*</label>
+    <input type="text" id="founder_1_linkedin" name="founder_1_linkedin" required>
+
+    <!-- Add additional founders (Person 2, 3) here as needed -->
+
+    <!-- Company Details Section -->
+    <div class="section-title">Company Details</div>
+    <label>How to characterize your industry?</label>
+    <div class="checkbox-group">
+        <label><input type="checkbox" name="industry" value="AI & ML"> AI & ML</label>
+        <label><input type="checkbox" name="industry" value="SaaS"> SaaS</label>
+        <label><input type="checkbox" name="industry" value="Healthcare"> Healthcare</label>
+        <label><input type="checkbox" name="industry" value="Fintech"> Fintech</label>
+        <!-- Add more industry options as needed -->
+    </div>
+
+    <label for="product_problem">What problem are your product/service/technology trying to solve?*</label>
+    <textarea id="product_problem" name="product_problem" required></textarea>
+
+    <label for="business_model">How is your business/idea making money (a.k.a business model)?*</label>
+    <textarea id="business_model" name="business_model" required></textarea>
+
+    <label for="unique_value">What is your unique value proposition and differentiator?*</label>
+    <textarea id="unique_value" name="unique_value" required></textarea>
+
+    <!-- Investor Section -->
+    <div class="section-title">The Investor</div>
+    <label for="investment_size">Describe ideal size of investment*</label>
+    <textarea id="investment_size" name="investment_size" required></textarea>
+
+    <!-- Slide Deck Section -->
+    <div class="section-title">Slide Decks and Media</div>
+    <label for="slide_deck">Do you have a slide deck or video? Please provide a link</label>
+    <input type="text" id="slide_deck" name="slide_deck">
+
+    <!-- Disclaimer Section -->
+    <div class="section-title">Disclaimer</div>
+    <label for="disclaimer">You are giving permission to familyofficeconsultants.ca to contact you regarding your application by submitting this application.</label>
+
+    <div class="button-container">
+        <button type="submit" class="submit-button">SUBMIT</button>
+    </div>
+</form>
+
+</body>
+</html>

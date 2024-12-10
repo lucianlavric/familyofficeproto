@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Submission Form</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        h1, p {
+            text-align: center;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            margin-top: 20px;
+            border-top: 2px solid #ccc;
+            padding-top: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Investment Submission Form</h1>
+<p>We’d like to hear from you if you are looking for investors in a fund or a particular project.</p>
+
+<form action="https://formspree.io/f/mvgonbkz" method="POST">
+    <!-- Contact Section -->
+    <div class="section-title">Contact</div>
+    <label for="first_name">First Name*</label>
+    <input type="text" id="first_name" name="first_name" required>
+
+    <label for="last_name">Last Name*</label>
+    <input type="text" id="last_name" name="last_name" required>
+
+    <label for="email">Contact Email*</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="confirm_email">Confirm Email*</label>
+    <input type="email" id="confirm_email" name="confirm_email" required>
+
+    <!-- Project / LP Fund Section -->
+    <div class="section-title">The Project / LP Fund</div>
+    <label for="project_name">Project/Fund Name*</label>
+    <input type="text" id="project_name" name="project_name" required>
+
+    <label for="industry">How to characterize your industry?</label>
+    <select id="industry" name="industry" required>
+        <option value="">Select an industry</option>
+        <option value="technology">Technology</option>
+        <option value="healthcare">Healthcare</option>
+        <option value="finance">Finance</option>
+        <option value="real_estate">Real Estate</option>
+        <!-- Add more industries as needed -->
+    </select>
+
+    <label for="project_description">Project/Fund Description*</label>
+    <textarea id="project_description" name="project_description" required></textarea>
+
+    <label for="duration">Duration? Single asset or fund? Major geography?*</label>
+    <textarea id="duration" name="duration" required></textarea>
+
+    <label for="irr">IRR Range and GP/LP Split Mechanism*</label>
+    <textarea id="irr" name="irr" required></textarea>
+
+    <label for="preferred_return">Preferred Return, if any?*</label>
+    <textarea id="preferred_return" name="preferred_return" required></textarea>
+
+    <label for="minimum_investment">Minimum Investment*</label>
+    <input type="text" id="minimum_investment" name="minimum_investment" required>
+
+    <!-- Founders Section -->
+    <div class="section-title">Founders & Key Management</div>
+    <label for="founders">Describe your key people, asset class experience, and track record*</label>
+    <textarea id="founders" name="founders" maxlength="1000" required></textarea>
+
+    <!-- Founder 1 -->
+    <label for="founder1_name">Person 1 Name*</label>
+    <input type="text" id="founder1_name" name="founder1_name" required>
+
+    <label for="founder1_title">Person 1 Title*</label>
+    <input type="text" id="founder1_title" name="founder1_title" required>
+
+    <label for="founder1_email">Person 1 Email*</label>
+    <input type="email" id="founder1_email" name="founder1_email" required>
+
+    <label for="founder1_linkedin">Person 1 LinkedIn*</label>
+    <input type="text" id="founder1_linkedin" name="founder1_linkedin" required>
+
+    <!-- Media Section -->
+    <div class="section-title">Slide Decks, Web or Media</div>
+    <label for="media_link">Do you have a slide deck, website, or a video? Provide a link</label>
+    <input type="url" id="media_link" name="media_link">
+
+    <!-- Disclaimer -->
+    <div class="section-title">Disclaimer</div>
+    <p>By submitting this application, you give permission to familyofficeconsultants.ca to contact you regarding your application.</p>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-button">Submit</button>
+</form>
+
+</body>
+</html>

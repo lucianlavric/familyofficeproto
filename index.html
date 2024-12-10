@@ -263,22 +263,86 @@
 
 <script>
     const industries = {
-        technology: ['AI & ML', 'SaaS', 'Cloud Computing', 'Cybersecurity', 'Internet of Things (IoT)'],
-        healthcare: ['Biotech', 'Medtech', 'Digital Health', 'Telemedicine'],
-        energy: ['Renewable Energy', 'Energy Storage', 'Electric Vehicles'],
-        consumer_goods: ['Food & Beverage', 'Personal Care', 'Luxury Goods'],
-        fintech: ['Payment Processing', 'Insurtech', 'Wealth Management'],
-        industrial_tech: ['Robotics', 'Industrial IoT', 'Advanced Manufacturing'],
-        transportation: ['Freight Tech', 'Autonomous Vehicles', 'Urban Mobility'],
-        media: ['Content Streaming', 'Esports & Gaming', 'Music Tech'],
-        real_estate: ['Investment Platforms', 'Smart Homes', 'Property Management'],
-        education: ['LMS', 'Online Learning', 'Corporate Training'],
-        food_agtech: ['Vertical Farming', 'Food Safety', 'Agricultural Innovations'],
-        esg: ['Climate Tech', 'Impact Investing', 'Renewable Infrastructure'],
-        govtech: ['Smart Cities', 'Public Safety', 'Civic Engagement'],
-        aerospace: ['Satellites', 'Defense Systems', 'Aviation Technologies'],
-        travel: ['Travel Tech', 'Hotel Booking Platforms', 'Transportation Solutions'],
-    };
+    technology: [
+        'AI & ML', 'SaaS', 'Cloud Computing', 'Cybersecurity', 'Internet of Things (IoT)', 'Blockchain & Cryptocurrency',
+        'Data Analytics & Big Data', 'E-commerce Platforms', 'Enterprise Software', 'Gaming & VR/AR'
+    ],
+    healthcare: [
+        'Biotech', 'Medtech (Medical Devices)', 'Digital Health / HealthTech', 'Pharmaceuticals', 'Telemedicine', 
+        'Diagnostics & Lab Testing', 'Genomics & Precision Medicine', 'Healthcare Services', 'Wearable Health Devices', 
+        'Mental Health Solutions'
+    ],
+    energy: [
+        'Renewable Energy', 'Energy Storage & Batteries', 'Electric Vehicles (EVs) & Charging Infra', 
+        'Carbon Capture & Sequestration', 'Energy Efficiency Solutions', 'Waste Management & Recycling', 
+        'Green Building Technologies', 'Smart Grid & Energy Distribution', 'Sustainable Materials', 
+        'Water & Environmental Technologies'
+    ],
+    consumer_goods: [
+        'Direct-to-Consumer (DTC) Brands', 'Food & Beverage Innovations', 'Personal Care & Wellness Products', 
+        'Luxury Goods', 'Apparel & Footwear', 'Home Goods & Furniture', 'Point of Sale, Logistics', 'Consumer Electronics', 
+        'Subscription-based Models', 'Pet Products'
+    ],
+    fintech: [
+        'Payment Processing & Digital Wallets', 'Insurtech', 'Wealth Management & Robo-Advisors', 'Peer-to-Peer Lending', 
+        'Crowdfunding Platforms', 'Blockchain-based Finance', 'Regtech (Regulatory Technology)', 'Open Banking & APIs', 
+        'Credit Scoring & Risk Management', 'Neobanks'
+    ],
+    industrial_tech: [
+        'Robotics', 'Industrial IoT', 'Advanced Manufacturing', 'Supply Chain Technology', '3D Printing', 
+        'Drones & Autonomous Vehicles', 'Smart Factory Solutions', 'Process Optimization Software', 'Industrial Equipment', 
+        'Predictive Maintenance'
+    ],
+    transportation: [
+        'Freight Tech', 'Last-mile Delivery', 'Ride-sharing & Mobility Platforms', 'Autonomous Vehicles & Fleet Management', 
+        'Urban Mobility Solutions', 'Aviation & Aerospace Technologies', 'Maritime Tech', 'Supply Chain Analytics', 
+        'Logistics Optimization Software', 'Railway & Infrastructure Tech'
+    ],
+    media: [
+        'Content Streaming Platforms', 'Digital Advertising', 'Esports & Gaming', 'Music Tech', 'Film Production Tech', 
+        'Content Creation Tools', 'Publishing Platforms', 'Social Media & Networking', 'Audio Tech (e.g., Podcasts)', 
+        'Creator Economy Platforms'
+    ],
+    real_estate: [
+        'Investment Platforms for Real Estate', 'Property Management Software', 'Construction Tech', 'Smart Home Technologies', 
+        'Rental Platforms', 'Virtual Tours & 3D Property Visualization', 'Digital Transaction Platforms (e.g., Digital Closing)', 
+        'Real Estate Analytics & AI Tools', 'IoT for Building Automation', 'Blockchain for Title & Transactions', 
+        'Vacation Rentals', 'Senior Housing & Assisted Living', 'Manufactured Housing', 'Student Housing', 'Office Buildings', 
+        'Retail Spaces & Shopping Centers', 'Industrial Properties (Distribution Centers)', 'Storage', 'Medical Office Buildings', 
+        'Data Centers', 'Entertainment Venues (e.g., Theaters, Events)', 'Timberland', 'Land Banking', 'Energy Production (Solar, Wind Farms)', 
+        'Agricultural Land Development', 'Mineral Rights Leasing', 'Farmland Investments', 'Infrastructure-oriented Developments', 
+        'Suburban Housing Developments', 'Converting Factories to Apartments'
+    ],
+    education: [
+        'Learning Management Systems (LMS)', 'Online Learning Platforms', 'Test Preparation Tools', 'Coding Bootcamps', 
+        'Early Childhood Education Tools', 'Professional & Corporate Training', 'Gamified Learning', 'Edutainment Content', 
+        'Career Guidance Platforms', 'Language Learning Apps'
+    ],
+    food_agtech: [
+        'Alternative Proteins', 'Vertical Farming', 'Precision Agriculture', 'Food Delivery Platforms', 'Agri-Biotech', 
+        'Supply Chain Transparency', 'Food Safety & Testing', 'Farming Equipment Innovations', 'Seed Technologies', 
+        'Agri-marketplace Platforms'
+    ],
+    esg: [
+        'Climate Tech', 'Diversity & Inclusion Platforms', 'ESG Analytics Tools', 'Circular Economy Innovations', 
+        'Ethical Supply Chains', 'Nonprofit Tech', 'Impact Investing Tools', 'Social Enterprises', 'Carbon Offsetting Platforms', 
+        'Renewable Infrastructure'
+    ],
+    govtech: [
+        'GovTech Platforms', 'Public Safety Technology', 'Smart City Solutions', 'Civic Engagement Platforms', 'E-Governance Tools', 
+        'Transportation Infrastructure Tech', 'Emergency Response Systems', 'Education & Training for Public Sector', 
+        'Environmental Policy Tech', 'Public Health Infrastructure'
+    ],
+    aerospace: [
+        'Satellites & Communication Systems', 'Unmanned Aerial Systems', 'Defense Software Solutions', 'Advanced Materials for Aerospace', 
+        'Aircraft Technologies', 'National Security Tech', 'Navigation & Surveillance Tools', 'Propulsion Systems', 'Cyber Defense'
+    ],
+    travel: [
+        'Travel Booking Platforms', 'Hospitality Management Software', 'Experience-driven Tourism', 'Transportation Aggregators', 
+        'Food & Beverage Tech for Hospitality', 'Shared Economy Models (e.g., Airbnb)', 'Virtual Tourism & VR Travel', 
+        'Hotel Automation Tools', 'Luggage & Travel Gear Innovations', 'Destination Management Solutions'
+    ]
+};
 
     function updateSubindustries() {
         const industry = document.getElementById('industry').value;

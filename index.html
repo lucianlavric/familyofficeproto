@@ -137,8 +137,8 @@
     <div class="section-title">Company Details</div>
     <!-- Dropdown for main categories -->
     <label for="industry">Select Industry:</label>
-    <select id="industry" name="industry" onchange="updateSubcategories()" required>
-        <option value="">Select n industry</option>
+    <select id="industry" name="industry" onchange="updateSubindustries()" required>
+        <option value="">Select an industry</option>
         <option value="technology">Technology</option>
         <option value="healthcare">Healthcare & Life Sciences</option>
         <option value="energy">Energy & Cleantech</option>
@@ -159,8 +159,11 @@
     <!-- Dropdown for subcategories -->
     <label for="subindustry">Select Subindustry:</label>
     <select id="subindustry" name="subindustry" required>
+        <option value="">Select a Subindustry</option>
+    </select>
 
-    <label for="product_problem">What problem are your product/service/technology trying to solve?*</label>
+    <!-- Problem Textarea -->
+    <label for="product_problem">What problem is your product/service/technology trying to solve?*</label>
     <textarea id="product_problem" name="product_problem" required></textarea>
 
     <label for="business_model">How is your business/idea making money (a.k.a business model)?*</label>
@@ -189,7 +192,7 @@
 </form>
 
 <script>
-    const categories = {
+    const industries = {
         technology: [
             'AI & ML', 'SaaS', 'Cloud Computing', 'Cybersecurity', 'Internet of Things (IoT)', 
             'Blockchain & Cryptocurrency', 'Data Analytics & Big Data', 'E-commerce Platforms', 
@@ -209,80 +212,16 @@
         consumer_goods: [
             'Direct-to-Consumer (DTC) Brands', 'Food & Beverage Innovations', 'Personal Care & Wellness Products',
             'Luxury Goods', 'Apparel & Footwear', 'Home Goods & Furniture', 'Point of Sale, Logistics', 
-            'Consumer Electronics', 'Subscription-based Models', 'Pet Products'
-        ],
-        fintech: [
-            'Payment Processing & Digital Wallets', 'Insurtech', 'Wealth Management & Robo-Advisors',
-            'Peer-to-Peer Lending', 'Crowdfunding Platforms', 'Blockchain-based Finance', 
-            'Regtech (Regulatory Technology)', 'Open Banking & APIs', 'Credit Scoring & Risk Management', 
-            'Neobanks'
-        ],
-        industrial_tech: [
-            'Robotics', 'Industrial IoT', 'Advanced Manufacturing', 'Supply Chain Technology', '3D Printing', 
-            'Drones & Autonomous Vehicles', 'Smart Factory Solutions', 'Process Optimization Software', 
-            'Industrial Equipment', 'Predictive Maintenance'
-        ],
-        transportation: [
-            'Freight Tech', 'Last-mile Delivery', 'Ride-sharing & Mobility Platforms', 'Autonomous Vehicles & Fleet Management', 
-            'Urban Mobility Solutions', 'Aviation & Aerospace Technologies', 'Maritime Tech', 
-            'Supply Chain Analytics', 'Logistics Optimization Software', 'Railway & Infrastructure Tech'
-        ],
-        media: [
-            'Content Streaming Platforms', 'Digital Advertising', 'Esports & Gaming', 'Music Tech', 
-            'Film Production Tech', 'Content Creation Tools', 'Publishing Platforms', 'Social Media & Networking', 
-            'Audio Tech (e.g., Podcasts)', 'Creator Economy Platforms'
-        ],
-        real_estate: [
-            'Investment Platforms for Real Estate', 'Property Management Software', 'Construction Tech', 
-            'Smart Home Technologies', 'Rental Platforms', 'Virtual Tours & 3D Property Visualization', 
-            'Digital Transaction Platforms (e.g., Digital Closing)', 'Real Estate Analytics & AI Tools', 
-            'IoT for Building Automation', 'Blockchain for Title & Transactions'
-        ],
-        education: [
-            'Learning Management Systems (LMS)', 'Online Learning Platforms', 'Test Preparation Tools', 
-            'Coding Bootcamps', 'Early Childhood Education Tools', 'Professional & Corporate Training', 
-            'Gamified Learning', 'Edutainment Content', 'Career Guidance Platforms', 'Language Learning Apps'
-        ],
-        food_agtech: [
-            'Alternative Proteins', 'Vertical Farming', 'Precision Agriculture', 'Food Delivery Platforms', 
-            'Agri-Biotech', 'Supply Chain Transparency', 'Food Safety & Testing', 'Farming Equipment Innovations', 
-            'Seed Technologies', 'Agri-marketplace Platforms'
-        ],
-        esg: [
-            'Climate Tech', 'Diversity & Inclusion Platforms', 'ESG Analytics Tools', 'Circular Economy Innovations', 
-            'Ethical Supply Chains', 'Nonprofit Tech', 'Impact Investing Tools', 'Social Enterprises', 
-            'Carbon Offsetting Platforms', 'Renewable Infrastructure'
-        ],
-        govtech: [
-            'GovTech Platforms', 'Public Safety Technology', 'Smart City Solutions', 'Civic Engagement Platforms', 
-            'E-Governance Tools', 'Transportation Infrastructure Tech', 'Emergency Response Systems', 
-            'Education & Training for Public Sector', 'Environmental Policy Tech', 'Public Health Infrastructure'
-        ],
-        aerospace: [
-            'Satellites & Communication Systems', 'Unmanned Aerial Systems', 'Defense Software Solutions', 
-            'Advanced Materials for Aerospace', 'Aircraft Technologies', 'National Security Tech', 
-            'Navigation & Surveillance Tools', 'Propulsion Systems', 'Cyber Defense'
-        ],
-        travel: [
-            'Travel Booking Platforms', 'Hospitality Management Software', 'Experience-driven Tourism', 
-            'Transportation Aggregators', 'Food & Beverage Tech for Hospitality', 'Shared Economy Models (e.g., Airbnb)', 
-            'Virtual Tourism & VR Travel', 'Hotel Automation Tools', 'Luggage & Travel Gear Innovations', 
-            'Destination Management Solutions'
+            'Consumer Electronics', 'Retail Tech', 'Sustainable Goods'
         ]
     };
 
-    // Function to update subcategories based on the main industry selected
-    function updateSubcategories() {
-        const industrySelect = document.getElementById('industry');
+    function updateSubindustries() {
+        const industry = document.getElementById('industry').value;
         const subindustrySelect = document.getElementById('subindustry');
-        const selectedIndustry = industrySelect.value;
-
-        // Clear existing subcategories
-        subindustrySelect.innerHTML = '<option value="">Select a subindustry</option>';
-
-        if (selectedindustry) {
-            const subcategories = categories[selectedIndustry];
-            subcategories.forEach(subindustry => {
+        subindustrySelect.innerHTML = '<option value="">Select a Subindustry</option>';
+        if (industry && industries[industry]) {
+            industries[industry].forEach(function(subindustry) {
                 const option = document.createElement('option');
                 option.value = subindustry;
                 option.textContent = subindustry;
@@ -291,5 +230,6 @@
         }
     }
 </script>
+
 </body>
 </html>

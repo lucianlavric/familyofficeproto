@@ -30,11 +30,15 @@
             text-align: left; /* Keeps the form content left-aligned */
         }
 
+        /* Section Title Styling */
         .section-title {
-            font-size: 1.2em;
-            margin-top: 20px;
-            border-top: 2px solid #ccc;
+            font-size: 1.5em;
+            margin-top: 30px;
+            border-top: 3px solid #ccc; /* Lighter border for a clean look */
             padding-top: 10px;
+            color: #333; /* Keep original color for consistency */
+            font-weight: bold;
+            text-transform: uppercase; /* Enhances visibility */
         }
 
         label {
@@ -82,12 +86,11 @@
 
         /* Terms Section Styling */
         .terms-section {
-            padding: 30px;
-            background-color: #f3f3f3; /* Slightly different background */
+            padding: 20px;
+            background-color: #fff;
             border: 1px solid #ccc;
-            border-radius: 8px;
-            margin-bottom: 30px; /* Increased space below the section */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow for emphasis */
+            border-radius: 4px;
+            margin-bottom: 20px;
         }
 
         .input-container {
@@ -99,14 +102,12 @@
             margin-bottom: 20px;
         }
 
-        /* Added spacing between Terms & Conditions list items */
-        .terms-section ul {
-            list-style-type: disc;
+        ul {
             padding-left: 20px;
         }
 
-        .terms-section li {
-            margin-bottom: 15px; /* Increased space between list items */
+        li {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -126,7 +127,7 @@
 </div>
 
 <form action="https://formspree.io/f/mjkvzqpz" method="POST" id="submitForm">
-    
+
     <!-- Contact Section -->
     <div class="section-title">Contact</div>
     <label for="first_name">First Name*</label>
@@ -187,7 +188,7 @@
 
     <!-- Company Details Section -->
     <div class="section-title">Company Details</div>
-    <!-- Dropdown for main categories -->
+
     <label for="industry">Select Industry:</label>
     <select id="industry" name="industry" onchange="updateSubindustries()" required>
         <option value="">Select an industry</option>
@@ -208,7 +209,6 @@
         <option value="travel">Travel & Hospitality</option>
     </select>
 
-    <!-- Dropdown for subcategories -->
     <label for="subindustry">Select Subindustry: </label>
     <select id="subindustry" name="subindustry" required></select>
 
@@ -220,6 +220,27 @@
 
     <label for="unique_value">What is your unique value proposition and differentiator?*</label>
     <textarea id="unique_value" name="unique_value" required></textarea>
+
+    <label for="target_customers">Who are your primary target customers?*</label>
+    <textarea id="target_customers" name="target_customers" required></textarea>
+
+    <label for="addressable_market">What is the size of your addressable market?*</label>
+    <textarea id="addressable_market" name="addressable_market" required></textarea>
+
+    <label for="main_competitors">Who are your main competitors?*</label>
+    <textarea id="main_competitors" name="main_competitors" required></textarea>
+
+    <label for="team_experience">What is your team’s experience working on this product/service/technology?*</label>
+    <textarea id="team_experience" name="team_experience" required></textarea>
+
+    <label for="intellectual_property">Do you have patents or intellectual property for your products?*</label>
+    <textarea id="intellectual_property" name="intellectual_property" required></textarea>
+
+    <label for="current_revenue">Current revenue size & targets for the near term?*</label>
+    <textarea id="current_revenue" name="current_revenue" required></textarea>
+
+    <label for="margins">Something about margins and net results? Current and near term.</label>
+    <textarea id="margins" name="margins"></textarea>
 
     <!-- Investor Section -->
     <div class="section-title">The Investor</div>
@@ -269,7 +290,7 @@
         if (industry && industries[industry]) {
             industries[industry].forEach(subindustry => {
                 const option = document.createElement('option');
-                option.value = subindustry.toLowerCase().replace(/\s+/g, '_');
+                option.value = subindustry;
                 option.textContent = subindustry;
                 subindustrySelect.appendChild(option);
             });

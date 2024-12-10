@@ -10,6 +10,13 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            text-align: center; /* Ensures everything is centered */
+        }
+
+        h1 {
+            margin-top: 0;
+            padding-top: 20px; /* Adjusts space at the top */
+            font-size: 2.5em; /* Makes the title larger */
         }
 
         form {
@@ -20,11 +27,14 @@
             background-color: #f9f9f9;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: left; /* Keeps the form content left-aligned */
         }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
+        .section-title {
+            font-size: 1.2em;
+            margin-top: 20px;
+            border-top: 2px solid #ccc;
+            padding-top: 10px;
         }
 
         label {
@@ -35,17 +45,11 @@
 
         input, textarea, select {
             width: 100%;
-            padding: 10px;
+            padding: 12px 15px; /* Adjusted padding for consistency */
             margin: 5px 0 15px;
             border: 1px solid #ccc;
             border-radius: 4px;
-        }
-
-        .section-title {
-            font-size: 1.2em;
-            margin-top: 20px;
-            border-top: 2px solid #ccc;
-            padding-top: 10px;
+            box-sizing: border-box; /* Ensures padding is included in the width */
         }
 
         .checkbox-group {
@@ -74,6 +78,15 @@
 
         .submit-button:hover {
             background-color: #45a049;
+        }
+
+        .input-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .founder-section {
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -119,19 +132,26 @@
 
     <!-- Founders & Key Management Section -->
     <div class="section-title">Founders & Key Management</div>
-    <label for="founder_1_name">Person 1 Name*</label>
-    <input type="text" id="founder_1_name" name="founder_1_name" required>
 
-    <label for="founder_1_title">Person 1 Title*</label>
-    <input type="text" id="founder_1_title" name="founder_1_title" required>
+    <!-- Founder 1 -->
+    <div class="founder-section" id="founder-1">
+        <label for="founder_1_name">Person 1 Name*</label>
+        <input type="text" id="founder_1_name" name="founder_1_name" required>
 
-    <label for="founder_1_email">Person 1 Email*</label>
-    <input type="email" id="founder_1_email" name="founder_1_email" required>
+        <label for="founder_1_title">Person 1 Title*</label>
+        <input type="text" id="founder_1_title" name="founder_1_title" required>
 
-    <label for="founder_1_linkedin">Person 1 LinkedIn*</label>
-    <input type="text" id="founder_1_linkedin" name="founder_1_linkedin" required>
+        <label for="founder_1_email">Person 1 Email*</label>
+        <input type="email" id="founder_1_email" name="founder_1_email" required>
 
-    <!-- Add additional founders (Person 2, 3) here as needed -->
+        <label for="founder_1_linkedin">Person 1 LinkedIn*</label>
+        <input type="text" id="founder_1_linkedin" name="founder_1_linkedin" required>
+    </div>
+
+    <!-- Button to add another founder -->
+    <div class="button-container">
+        <button type="button" onclick="addFounder()">Add Another Founder</button>
+    </div>
 
     <!-- Company Details Section -->
     <div class="section-title">Company Details</div>
@@ -157,12 +177,9 @@
     </select>
 
     <!-- Dropdown for subcategories -->
-    <label for="subindustry">Select Subindustry:</label>
-    <select id="subindustry" name="subindustry" required>
-        <option value="">Select a Subindustry</option>
-    </select>
+    <label for="subindustry">Select Subindustry: </label>
+    <select id="subindustry" name="subindustry" required></select>
 
-    <!-- Problem Textarea -->
     <label for="product_problem">What problem is your product/service/technology trying to solve?*</label>
     <textarea id="product_problem" name="product_problem" required></textarea>
 
@@ -193,41 +210,61 @@
 
 <script>
     const industries = {
-        technology: [
-            'AI & ML', 'SaaS', 'Cloud Computing', 'Cybersecurity', 'Internet of Things (IoT)', 
-            'Blockchain & Cryptocurrency', 'Data Analytics & Big Data', 'E-commerce Platforms', 
-            'Enterprise Software', 'Gaming & VR / AR'
-        ],
-        healthcare: [
-            'Biotech', 'Medtech (Medical Devices)', 'Digital Health / HealthTech', 'Pharmaceuticals', 
-            'Telemedicine', 'Diagnostics & Lab Testing', 'Genomics & Precision Medicine', 
-            'Healthcare Services', 'Wearable Health Devices', 'Mental Health Solutions'
-        ],
-        energy: [
-            'Renewable Energy', 'Energy Storage & Batteries', 'Electric Vehicles (EVs) & Charging Infra', 
-            'Carbon Capture & Sequestration', 'Energy Efficiency Solutions', 'Waste Management & Recycling', 
-            'Green Building Technologies', 'Smart Grid & Energy Distribution', 'Sustainable Materials', 
-            'Water & Environmental Technologies'
-        ],
-        consumer_goods: [
-            'Direct-to-Consumer (DTC) Brands', 'Food & Beverage Innovations', 'Personal Care & Wellness Products',
-            'Luxury Goods', 'Apparel & Footwear', 'Home Goods & Furniture', 'Point of Sale, Logistics', 
-            'Consumer Electronics', 'Retail Tech', 'Sustainable Goods'
-        ]
+        technology: ['AI & ML', 'SaaS', 'Cloud Computing', 'Cybersecurity', 'Internet of Things (IoT)'],
+        healthcare: ['Biotech', 'Medtech', 'Digital Health', 'Telemedicine'],
+        energy: ['Renewable Energy', 'Energy Storage', 'Electric Vehicles'],
+        consumer_goods: ['Food & Beverage', 'Personal Care', 'Luxury Goods'],
+        fintech: ['Payment Processing', 'Insurtech', 'Wealth Management'],
+        industrial_tech: ['Robotics', 'Industrial IoT', 'Advanced Manufacturing'],
+        transportation: ['Freight Tech', 'Autonomous Vehicles', 'Urban Mobility'],
+        media: ['Content Streaming', 'Esports & Gaming', 'Music Tech'],
+        real_estate: ['Investment Platforms', 'Smart Homes', 'Property Management'],
+        education: ['LMS', 'Online Learning', 'Corporate Training'],
+        food_agtech: ['Vertical Farming', 'Food Safety', 'Agricultural Innovations'],
+        esg: ['Climate Tech', 'Impact Investing', 'Renewable Infrastructure'],
+        govtech: ['Smart Cities', 'Public Safety', 'Civic Engagement'],
+        aerospace: ['Satellites', 'Defense Systems', 'Aviation Technologies'],
+        travel: ['Travel Tech', 'Hotel Booking Platforms', 'Transportation Solutions'],
     };
 
     function updateSubindustries() {
         const industry = document.getElementById('industry').value;
         const subindustrySelect = document.getElementById('subindustry');
-        subindustrySelect.innerHTML = '<option value="">Select a Subindustry</option>';
+        
+        // Clear previous subindustries
+        subindustrySelect.innerHTML = '';
+
         if (industry && industries[industry]) {
-            industries[industry].forEach(function(subindustry) {
+            industries[industry].forEach(subindustry => {
                 const option = document.createElement('option');
                 option.value = subindustry;
                 option.textContent = subindustry;
                 subindustrySelect.appendChild(option);
             });
         }
+    }
+
+    let founderCount = 1;
+
+    function addFounder() {
+        founderCount++;
+
+        const newFounderSection = document.createElement('div');
+        newFounderSection.classList.add('founder-section');
+        newFounderSection.innerHTML = `
+            <label for="founder_${founderCount}_name">Person ${founderCount} Name*</label>
+            <input type="text" id="founder_${founderCount}_name" name="founder_${founderCount}_name" required>
+
+            <label for="founder_${founderCount}_title">Person ${founderCount} Title*</label>
+            <input type="text" id="founder_${founderCount}_title" name="founder_${founderCount}_title" required>
+
+            <label for="founder_${founderCount}_email">Person ${founderCount} Email*</label>
+            <input type="email" id="founder_${founderCount}_email" name="founder_${founderCount}_email" required>
+
+            <label for="founder_${founderCount}_linkedin">Person ${founderCount} LinkedIn*</label>
+            <input type="text" id="founder_${founderCount}_linkedin" name="founder_${founderCount}_linkedin" required>
+        `;
+        document.getElementById('submitForm').insertBefore(newFounderSection, document.querySelector('.button-container'));
     }
 </script>
 
